@@ -1,0 +1,24 @@
+Implement a background task in Spring Boot using a custom thread pool to handle concurrent operations efficiently.
+
+📝 Tasks
+1. Enable Async Support
+Create a Spring Boot application.
+Add @EnableAsync to your main application class.
+2. Configure Thread Pool
+Define a custom Executor bean to manage threads (instead of using the default unbounded pool).
+
+Core Pool Size: 2
+Max Pool Size: 2
+Thread Name Prefix: "LabWorker-"
+3. Create Async Task
+Create a service with a method annotated with @Async.
+
+The method should accept a task ID (int).
+Logic:
+Print: "Start Task " + id + " on " + Thread.currentThread().getName()
+Sleep for 1 second (Thread.sleep(1000))
+Print: "End Task " + id
+4. Run & Verify
+Call the async method 3 times from a CommandLineRunner.
+
+Expected Output: You should see tasks starting on different threads (e.g., LabWorker-1, LabWorker-2) without waiting for previous tasks to finish.
